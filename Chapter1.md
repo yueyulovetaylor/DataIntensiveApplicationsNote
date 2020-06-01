@@ -44,5 +44,17 @@
     * Final solution: Most users' tweets continue to be fanned out to home timelines. A small number of users with large number of followers (For example, Donald Trump or Taylor Swift) are excepted from the fan-out. 
 
 ### Describing Performance
+  * Throughput - # of records we can process per second / the total time it takes to run a job on a dataset of a certain size.
+  * Response time - The time between a client sending a request and receiving a response. We care about distribution of values. We care about the following statistics for Response time - average, median and tail latencies (High percentiles of response times).
+  * Queueing delay accounts for a large part of response time at high percentiles.
 
 ### Approaches for Coping with Load
+  * Scaling up - Moving to a more powerful machine.
+  * Scaling out - Distributing the load across multiple smaller machines. Taking a stateful data systems from a single node to a distributed setup can introduce a lot of complexity.
+  * Elastic - Automatically add computing resources when detecting a load increase.
+
+## Maintainbility
+  * Operability - Keep the system running smoothly.
+  * Simplicity - Make it easy for new engineers to understand the system.
+    * Abstraction - Hide a great deal of implementation detail behind a clean, simple to understand facade.
+  * Evolvability - Make it easy for engineers to make changes to the system in the future.
