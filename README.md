@@ -1,4 +1,4 @@
 # Designing Data-Intensive Applications Reading Note
 
-Please refer to the links below for notes of each chapter.
-## [Chapter 1: Reliable, Scalable and Maintainable Applications](./Chapter1.md)
+## Part 1. Foundations of Data Systems
+### [Chapter 1: Reliable, Scalable and Maintainable Applications](./Chapter1.md)
