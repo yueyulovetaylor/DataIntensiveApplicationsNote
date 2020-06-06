@@ -36,7 +36,32 @@
     * For Relational Database: Better support for joins, many-to-one and many-to-many relationships.
   * Which data model leads to simpler application code?
     * Better to use Document Database if the data in the application has a document-like structure in order to avoid shredding (splitting a document-like structure into multiple tables).
+  * Schema flexibility in the document model
+    * JSON does not enforce any schema. XML support in relational databases usually comes with optional schema validation.
+    * No schema means that clients have no guarantees as to what fields the documents may contain.
+    * Document databases assumes an implicit schema which is not enforced by the database.
+    * Schema-on-read and schema-on-write
+      * Schema-on-read: The structure of the data is implicit, and only interpreted when data is read. Similar to dynamic (runtime) type checking. Schema-on-read is advantageous if the items in the collection don't have the same structure for some reason.
+      * Schema-on-write: Schema is explicit and the database ensures all written data conforms to it. Similar to static (compile-time) type checking.
+        * Schema changes on Relational database (SQL). Running the `UPDATE` statement on a large table is likely to be slow.
+  * Data locality for queries
+    * Data locality is advantageous if you need large parts of the document at the same time.
 
 ## Query Languages for Data
+  * Imperative language: Perform certain operations in a certain order.
+  * Declarative query language: Specify the pattern of the data you want, and how you want the data to be transformed. Hide implementation details of the database engine and lend themselves to parallel execution.
+### Declarative Queries on the Web
+  * CSS and XSL are both declarative languages for specifying the styling of a document.
+### MapReduce Querying
+  * An example would be MongoDB's MapReduce feature. Please refer to the following example (filter the observations to only show species in the sharp family):\
+    <img src="./Images/Chapter2/MongoDBMapReduce.png" height=60% width=60%>\
+    * The filter considers only `Sharks` species.
+    * `map` is called once for document that matches the query.
+    * The `map` function emits a <key, value> pair.
+    * The <key, value> pairs emitted by `map` are grouped by key.
+    * `reduce` function adds up the number of animals in a particular month.
+    * The final output is written to `monthlySharkReport`.
+  * The `map` and `reduce` functions must be pure functions which only use data passed to them as input. They cannot perform additional database pueries and must not have any side effects.
+  * The moral of the story is that **a NoSQL system may find itself accidentally reinventing SQL**.
 
 ## Graph-Like Data Models
