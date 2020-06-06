@@ -21,7 +21,7 @@
     * Better search
   * The standardized lists will be a hashmap from ID to text, by doing this, we expect to remove duplication when information (locations or industries) are the same in multiple places. This is called Normalization Many-to-One relationship in the database.
   * Data has a tendency of becoming more interconnected as feature are added to applications, which require many-to-many relationships. The image below illustrates how many-to-many relationship looks like in the LinkedIn profile data model.\
-    <img src="./Images/Chapter2/LinkedInManyToMany.png" height=60% width=60%>\
+    <img src="./Images/Chapter2/LinkedInManyToMany.png" height=60% width=60%>
 ### Are Document Databases Repeating History?
   * How to best represent many-to-many relationships and joins in document databses and NoSQL?
   * The Network Model -- Conference on Data System Languages (CODASYL Model)
@@ -54,7 +54,7 @@
   * CSS and XSL are both declarative languages for specifying the styling of a document.
 ### MapReduce Querying
   * An example would be MongoDB's MapReduce feature. Please refer to the following example (filter the observations to only show species in the sharp family):\
-    <img src="./Images/Chapter2/MongoDBMapReduce.png" height=60% width=60%>\
+    <img src="./Images/Chapter2/MongoDBMapReduce.png" height=60% width=60%>
     * The filter considers only `Sharks` species.
     * `map` is called once for document that matches the query.
     * The `map` function emits a <key, value> pair.
