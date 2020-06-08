@@ -1,6 +1,6 @@
 # Chapter 1: Reliable, Scalable and Maintainable Applications
 
-## Think aboue Data Systems
+## I. Think aboue Data Systems
   * Many new tools for data storage and processing have emerged in recent years, and they no longer nearly fit into traditional categories.
   * Demanding and wide-ranging requirements that a single tool can no longer meet all its data processing and storage needs.
   * The three concerns in this book:
@@ -8,7 +8,7 @@
     * Scalability: Reasonable ways of dealing with growth.
     * Maintainability
 
-## Reliability
+## II. Reliability
   * Fault tolerant: Continue to work correctly even when things go wrong.
   * Fault: One component of the system deviating from its spec.
   * Failure: The system as a whole stops providing the required service to the user.
@@ -30,7 +30,7 @@
     * Set up detailed and clear monitoring (telemetry).
     * Implement good management practices and training.
 
-## Scalability
+## III. Scalability
 ### Describing Load
   * Load parameters: Request per second to a web server; the ratio of reads to writes to a database; # of simultaneously active users in a chat room; the hit rate on a cache.
   * Case study: Twitter
@@ -53,7 +53,7 @@
   * Scaling out - Distributing the load across multiple smaller machines. Taking a stateful data systems from a single node to a distributed setup can introduce a lot of complexity.
   * Elastic - Automatically add computing resources when detecting a load increase.
 
-## Maintainbility
+## IV. Maintainbility
   * Operability - Keep the system running smoothly.
   * Simplicity - Make it easy for new engineers to understand the system.
     * Abstraction - Hide a great deal of implementation detail behind a clean, simple to understand facade.
