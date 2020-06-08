@@ -54,14 +54,14 @@
   * CSS and XSL are both declarative languages for specifying the styling of a document.
 ### MapReduce Querying
   * An example would be MongoDB's MapReduce feature. Please refer to the following example (filter the observations to only show species in the sharp family):\
-    <img src="./Images/Chapter2/MongoDBMapReduce.png" height=60% width=60%>
+    <img src="./Images/Chapter2/MongoDBMapReduce.png" height=50% width=50%>
     * The filter considers only `Sharks` species.
     * `map` is called once for document that matches the query.
     * The `map` function emits a <key, value> pair.
     * The <key, value> pairs emitted by `map` are grouped by key.
     * `reduce` function adds up the number of animals in a particular month.
     * The final output is written to `monthlySharkReport`.
-  * The `map` and `reduce` functions must be pure functions which only use data passed to them as input. They cannot perform additional database pueries and must not have any side effects.
+  * The `map` and `reduce` functions must be pure functions which only use data passed to them as input. They cannot perform additional database queries and must not have any side effects.
   * The moral of the story is that **a NoSQL system may find itself accidentally reinventing SQL**.
 
 ## III. Graph-Like Data Models
@@ -80,31 +80,31 @@
     * A collection of properties (<key, value> pairs)
   * Properties of Property Graphs
     * Any vertex can have an edge connecting it with any other vertex. No schema is required.
-    * Given any vertex, you can efficiently find both is incoming and outgoing edges, and thus traversing the graph.
+    * Given any vertex, you can efficiently find both its incoming and outgoing edges, and thus traversing the graph.
     * By using different labels for different kinds of relationships, we can store several different kinds of information in a single graph, while maintaining a clean data model.
 ### The Cypher Query Language
   * Declarative Query Language for property graphs
   * Example: Find names of all the people who immigrated from the United States to Europe.
   * Solutions:\
-    <img src="./Images/Chapter2/CypherQuery.png" height=70% width=70%>
+    <img src="./Images/Chapter2/CypherQuery.png" height=60% width=60%>
     * (1) Find all `person` vertices whose outgoing `BORN_IN` edge chain leads to a `location` vertex whose property is United States.
     * (2) Find all `person` vertices whose outgoing `LIVE_IN` edge chain leads to a `location` vertex whose property is United States.
     * For all `person` vertices who matches both (1) and (2), return their `name` property value.
 ### Graph Queries in SQL
   * We can represent the GraphModelExample image above in the following SQL schema.\
-    <img src="./Images/Chapter2/SchemaGraphModel.png" height=50% width=50%>
+    <img src="./Images/Chapter2/SchemaGraphModel.png" height=40% width=40%>
   * The SQL for the same example above looks like\
-    <img src="./Images/Chapter2/GraphModelSQL1.png" height=70% width=70%>
-    <img src="./Images/Chapter2/GraphModelSQL2.png" height=70% width=70%>
+    <img src="./Images/Chapter2/GraphModelSQL1.png" height=60% width=60%>
+    <img src="./Images/Chapter2/GraphModelSQL2.png" height=60% width=60%>
 ### Triple-Stores and SAPRQL
   * Triple-Store: All information are stored in a three-part statements: <subject, prediacate, object>. Subject is a vertex in a graph.
-    * If object is a primitive datatype. <prediacate, object> is a <key,value> pair.
-    * If object is another vertex. prediacate is an edge in the graph, subject is the tail vertex and object is the head vertex.
+    * If object is a primitive datatype, `<prediacate, object>` is a `<key,value>` pair.
+    * If object is another vertex, prediacate is an edge in the graph, subject is the tail vertex and object is the head vertex.
   * Triple-Store example:\
-    <img src="./Images/Chapter2/TripleStore.png" height=70% width=70%>
+    <img src="./Images/Chapter2/TripleStore.png" height=60% width=60%>
   * Resource Description Framework (RDF): A mechanism for different websites to publish data in a consistent format, allowing data from different websites to be combined into a web of data. RDF sometimes is written in an XML form.
   * SAPRQL is a query language for triple-stores using the RDF data model.
 ### The Foundation: Datalog
   * Triple is expressed as `prediacate(subject, prediacate)`. And we can express the query example above as\
-    <img src="./Images/Chapter2/DatalogQuery.png" height=70% width=70%>
-    * We define rules (`with_recursive` and `migrated`) as new predicates. And combine different predicates into blocks of logic that finds all people born in United States and live in Europe.
+    <img src="./Images/Chapter2/DatalogQuery.png" height=60% width=60%>
+    * We define rules (`with_recursive` and `migrated`) as new predicates. And combine different predicates into blocks of logic (functions) that finds all people born in United States and live in Europe.
