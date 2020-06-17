@@ -48,10 +48,19 @@ db_get () { grep "^$1," database | sed -e "s/^$1,//" | tail -n 1 }
     <img src="./Images/Chapter3/SSTable.png" height=60% width=60%>
 
 #### 1.2.1 Constructing and Maintaining SSTables
+  * When a write request comes, add it to a in-memory balanced tree structure (red-black tree or AVL tree), which serves as a memtable.
+  * If a memtable reaches a threshold, store the memtable into the newest segment file of the database. Write request can continue to a new memtable instance.
+  * When read request comes, it will start from the in-memory memtable to most recent on-disk segment file, then in the next order segment, etc.
+  * A background thread will keep running a merging and compaction process.
 
 #### 1.2.2 Making an LSM-Tree out of SSTables
+  * Storage engines that are based on merging and compacting sorted files are often called LSM storage engines.
 
 #### 1.2.3 Performance Optimizations
+  * Looking up keys that do not exist in the database can be slow. So additional Bloom Filter is usually implemented in order to tell whether a key exists in the database or not.
+  * Basic idea of LSM-Tree is to **keep a cascade of SSTables that are merged in the background**. Two different compaction strategies:
+    * Size-tiered compaction: newer and smaller SSTables are merged into older and larger ones.
+    * Leveled compaction: key range is split up into smaller SSTables and older data is moved to "separate" levels. This allows compaction to be more incremental and use small disk size.
 
 ### 1.3 B-Trees
 
